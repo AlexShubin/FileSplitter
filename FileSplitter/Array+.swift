@@ -5,11 +5,13 @@
 import Foundation
 
 extension Array {
-    func chunked(by chunksCount: Int) -> [ArraySlice<Element>] {
-        assert(chunksCount > 1)
-        let chunkSize = count / chunksCount + count % chunksCount
+    func splitted(chunksCount: Int) -> [SubSequence] {
+        guard chunksCount > 1, count > 1 else {
+            return [ArraySlice(self)]
+        }
+        let chunkSize = count / chunksCount + (count % chunksCount > 0 ? 1 : 0)
         return stride(from: 0, to: count, by: chunkSize).map {
-            self[$0..<Swift.min($0 + chunkSize, self.count)]
+            self[$0..<Swift.min($0 + chunkSize, count)]
         }
     }
 }

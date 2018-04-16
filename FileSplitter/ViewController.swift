@@ -6,38 +6,31 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    @IBOutlet weak var doneLabel: NSTextField!
-    @IBOutlet weak var fileNameTextField: NSTextField!
-    @IBOutlet weak var chunksCountTextField: NSTextField!
+    @IBOutlet private weak var fileNameTextField: NSTextField!
+    @IBOutlet private weak var chunksCountTextField: NSTextField!
     
     private var chunksCount = 2 {
         didSet {
             chunksCountTextField.stringValue = String(chunksCount)
-            doneLabel.isHidden = true
         }
     }
     private var filePath: URL? {
         didSet {
             fileNameTextField.stringValue = filePath?.path ?? ""
-            doneLabel.isHidden = true
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        doneLabel.isHidden = true
-    }
-    
-    @IBAction func runButtonTap(_ sender: NSButton) {
-        doneLabel.isHidden = true
+    @IBAction private func runButtonTap(_ sender: NSButton) {
         guard let path = filePath else {
-            fatalError("Should choose file")
+            showAlert(title: "Error", text: "File not chosen!")
+            return
         }
         guard let fileData = try? String(contentsOfFile: path.path, encoding: .utf8) else {
-            fatalError("Couldn't read file")
+            showAlert(title: "Error", text: "Couldn't read file!")
+            return
         }
         let fileStrings = fileData.components(separatedBy: .newlines).filter { !$0.isEmpty }
-        let stringsToWrite = fileStrings.chunked(by: chunksCount).map {
+        let stringsToWrite = fileStrings.splitted(chunksCount: chunksCount).map {
             $0.joined(separator: "\n")
         }
         let dirPath = path.deletingLastPathComponent()
@@ -47,32 +40,47 @@ class ViewController: NSViewController {
             let newFile = dirPath
                 .appendingPathComponent("\(fileName)_\(i+1)")
                 .appendingPathExtension(fileExt)
-            try! str.write(to: newFile, atomically: true, encoding: .utf8)
+            do {
+                try str.write(to: newFile, atomically: true, encoding: .utf8)
+            } catch {
+                showAlert(title: "Error", text: "Couldn't save file!")
+                return
+            }
         }
-        doneLabel.isHidden = false
+        showAlert(title: "Success", text: "Done!")
     }
     
-    @IBAction func chunksStepperDidChange(_ sender: NSStepper) {
+    @IBAction private func chunksStepperDidChange(_ sender: NSStepper) {
         chunksCount = sender.integerValue
     }
     
-    @IBAction func selectButtonTap(_ sender: NSButton) {
-        let dialog = NSOpenPanel();
+    @IBAction private func selectButtonTap(_ sender: NSButton) {
+        let dialog = NSOpenPanel()
         
-        dialog.title                   = "Choose a .txt file";
-        dialog.showsResizeIndicator    = true;
-        dialog.showsHiddenFiles        = false;
-        dialog.canChooseDirectories    = false;
-        dialog.canCreateDirectories    = true;
-        dialog.allowsMultipleSelection = false;
-        dialog.allowedFileTypes        = ["txt"];
+        dialog.title                   = "Choose a .txt file"
+        dialog.showsResizeIndicator    = true
+        dialog.showsHiddenFiles        = false
+        dialog.canChooseDirectories    = false
+        dialog.canCreateDirectories    = true
+        dialog.allowsMultipleSelection = false
+        dialog.allowedFileTypes        = ["txt"]
         
-        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+        if dialog.runModal() == .OK {
             filePath = dialog.url
-        } else {
-            return
         }
     }
     
+    private func showAlert(title: String, text: String) {
+        guard let window = view.window else {
+            return
+        }
+        let alert = NSAlert()
+        alert.messageText = title
+        alert.informativeText = text
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "OK")
+        alert.window.level = .modalPanel
+        alert.beginSheetModal(for: window)
+    }
 }
 

@@ -208,21 +208,11 @@
                                                     <action selector="runButtonTap:" target="XfG-lQ-9wD" id="3IY-vj-DUj"/>
                                                 </connections>
                                             </button>
-                                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Cx-sQ-9Hr">
-                                                <rect key="frame" x="-2" y="4" width="42" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Done!" id="apr-K1-PHc">
-                                                    <font key="font" metaFont="systemBold"/>
-                                                    <color key="textColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
@@ -247,7 +237,6 @@
                     </view>
                     <connections>
                         <outlet property="chunksCountTextField" destination="L4L-2p-b9P" id="3Jc-Eu-K3F"/>
-                        <outlet property="doneLabel" destination="2Cx-sQ-9Hr" id="e1X-Ur-hCD"/>
                         <outlet property="fileNameTextField" destination="QZb-yt-dDM" id="1YY-yS-NiT"/>
                     </connections>
                 </viewController>

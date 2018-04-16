@@ -1,8 +1,4 @@
 //
-//  AppDelegate.swift
-//  FileSplitter
-//
-//  Created by Alex Shubin on 15/04/2018.
 //  Copyright © 2018 Alex Shubin. All rights reserved.
 //
 
