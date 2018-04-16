@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B866CD892084BB2F00FEA2F4 /* FlieSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866CD882084BB2F00FEA2F4 /* FlieSplitter.swift */; };
+		B866CD8B2084BFDA00FEA2F4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866CD8A2084BFDA00FEA2F4 /* Result.swift */; };
 		B8A37C6720848B4100001F3E /* ArrayExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A37C6620848B4100001F3E /* ArrayExtensionsTests.swift */; };
 		B8C1F26F208330FC0016708B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1F26E208330FC0016708B /* AppDelegate.swift */; };
 		B8C1F271208330FC0016708B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1F270208330FC0016708B /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B866CD882084BB2F00FEA2F4 /* FlieSplitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlieSplitter.swift; sourceTree = "<group>"; };
+		B866CD8A2084BFDA00FEA2F4 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B8A37C6420848B4100001F3E /* FileSplitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileSplitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A37C6620848B4100001F3E /* ArrayExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionsTests.swift; sourceTree = "<group>"; };
 		B8A37C6820848B4100001F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 				B8C1F26E208330FC0016708B /* AppDelegate.swift */,
 				B8C1F27E20833FD80016708B /* Array+.swift */,
 				B8C1F270208330FC0016708B /* ViewController.swift */,
+				B866CD882084BB2F00FEA2F4 /* FlieSplitter.swift */,
+				B866CD8A2084BFDA00FEA2F4 /* Result.swift */,
 				B8C1F272208330FD0016708B /* Assets.xcassets */,
 				B8C1F274208330FD0016708B /* Main.storyboard */,
 				B8C1F277208330FD0016708B /* Info.plist */,
@@ -211,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B866CD892084BB2F00FEA2F4 /* FlieSplitter.swift in Sources */,
+				B866CD8B2084BFDA00FEA2F4 /* Result.swift in Sources */,
 				B8C1F271208330FC0016708B /* ViewController.swift in Sources */,
 				B8C1F27F20833FD80016708B /* Array+.swift in Sources */,
 				B8C1F26F208330FC0016708B /* AppDelegate.swift in Sources */,

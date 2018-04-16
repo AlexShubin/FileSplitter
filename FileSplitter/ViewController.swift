@@ -6,6 +6,10 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    private let fileSplitter: FileSplitter = DiskFileSplitter()
+    
+    @IBOutlet weak var runButton: NSButton!
+    @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet private weak var fileNameTextField: NSTextField!
     @IBOutlet private weak var chunksCountTextField: NSTextField!
     
@@ -25,29 +29,28 @@ class ViewController: NSViewController {
             showAlert(title: "Error", text: "File not chosen!")
             return
         }
-        guard let fileData = try? String(contentsOfFile: path.path, encoding: .utf8) else {
-            showAlert(title: "Error", text: "Couldn't read file!")
-            return
-        }
-        let fileStrings = fileData.components(separatedBy: .newlines).filter { !$0.isEmpty }
-        let stringsToWrite = fileStrings.splitted(chunksCount: chunksCount).map {
-            $0.joined(separator: "\n")
-        }
-        let dirPath = path.deletingLastPathComponent()
-        let fileName = path.deletingPathExtension().lastPathComponent
-        let fileExt = path.pathExtension
-        for (i, str) in stringsToWrite.enumerated() {
-            let newFile = dirPath
-                .appendingPathComponent("\(fileName)_\(i+1)")
-                .appendingPathExtension(fileExt)
-            do {
-                try str.write(to: newFile, atomically: true, encoding: .utf8)
-            } catch {
-                showAlert(title: "Error", text: "Couldn't save file!")
+        setLoadingState(true)
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let `self` = self else {
                 return
             }
+            self.fileSplitter
+                .split(flieUrl: path,
+                       chunksCount: self.chunksCount) {
+                        self.setLoadingState(false)
+                        switch $0 {
+                        case .success:
+                            self.showAlert(title: "Success", text: "Done!")
+                        case .error(let error):
+                            switch error {
+                            case .readFileError:
+                                self.showAlert(title: "Error", text: "Couldn't read file!")
+                            case .writeFileError:
+                                self.showAlert(title: "Error", text: "Couldn't save file!")
+                            }
+                        }
+            }
         }
-        showAlert(title: "Success", text: "Done!")
     }
     
     @IBAction private func chunksStepperDidChange(_ sender: NSStepper) {
@@ -67,6 +70,15 @@ class ViewController: NSViewController {
         
         if dialog.runModal() == .OK {
             filePath = dialog.url
+        }
+    }
+    
+    private func setLoadingState(_ isLoading: Bool) {
+        runButton.isEnabled = !isLoading
+        if isLoading {
+            activityIndicator.startAnimation(nil)
+        } else {
+            activityIndicator.stopAnimation(nil)
         }
     }
     

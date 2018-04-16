@@ -196,7 +196,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnQ-Gl-p5J">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="21"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-Mp-n0M">
                                                 <rect key="frame" x="-6" y="-7" width="64" height="32"/>
@@ -208,11 +208,16 @@
                                                     <action selector="runButtonTap:" target="XfG-lQ-9wD" id="3IY-vj-DUj"/>
                                                 </connections>
                                             </button>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="DsA-UV-Ax9">
+                                                <rect key="frame" x="60" y="5" width="16" height="16"/>
+                                            </progressIndicator>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
@@ -236,8 +241,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="DsA-UV-Ax9" id="Nv3-4u-2qO"/>
                         <outlet property="chunksCountTextField" destination="L4L-2p-b9P" id="3Jc-Eu-K3F"/>
                         <outlet property="fileNameTextField" destination="QZb-yt-dDM" id="1YY-yS-NiT"/>
+                        <outlet property="runButton" destination="bUM-Mp-n0M" id="n4N-Md-D2A"/>
                     </connections>
                 </viewController>
             </objects>
