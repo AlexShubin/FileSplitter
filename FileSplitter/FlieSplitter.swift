@@ -9,13 +9,7 @@ enum FileSplitterError: String, Error {
     case writeFileError
 }
 
-protocol FileSplitter {
-    func split(flieUrl: URL,
-               chunksCount: Int,
-               completion: @escaping ((Result<Void, FileSplitterError>) -> Void))
-}
-
-struct DiskFileSplitter: FileSplitter {
+struct FileSplitter {
     
     func split(flieUrl: URL,
                chunksCount: Int,

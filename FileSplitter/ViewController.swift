@@ -6,7 +6,7 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    private let fileSplitter: FileSplitter = DiskFileSplitter()
+    private let fileSplitter = FileSplitter()
     
     @IBOutlet weak var runButton: NSButton!
     @IBOutlet weak var activityIndicator: NSProgressIndicator!

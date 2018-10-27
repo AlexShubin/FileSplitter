@@ -154,10 +154,12 @@
 				TargetAttributes = {
 					B8A37C6320848B4100001F3E = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						TestTargetID = B8C1F26A208330FC0016708B;
 					};
 					B8C1F26A208330FC0016708B = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -262,7 +264,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FileSplitter.app/Contents/MacOS/FileSplitter";
 			};
 			name = Debug;
@@ -282,7 +284,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FileSplitter.app/Contents/MacOS/FileSplitter";
 			};
 			name = Release;
@@ -415,7 +417,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -434,7 +436,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
