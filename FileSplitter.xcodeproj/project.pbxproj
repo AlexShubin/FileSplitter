@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B866CD892084BB2F00FEA2F4 /* FlieSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866CD882084BB2F00FEA2F4 /* FlieSplitter.swift */; };
-		B866CD8B2084BFDA00FEA2F4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866CD8A2084BFDA00FEA2F4 /* Result.swift */; };
 		B8A37C6720848B4100001F3E /* ArrayExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A37C6620848B4100001F3E /* ArrayExtensionsTests.swift */; };
 		B8C1F26F208330FC0016708B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1F26E208330FC0016708B /* AppDelegate.swift */; };
 		B8C1F271208330FC0016708B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1F270208330FC0016708B /* ViewController.swift */; };
@@ -29,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		B866CD882084BB2F00FEA2F4 /* FlieSplitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlieSplitter.swift; sourceTree = "<group>"; };
-		B866CD8A2084BFDA00FEA2F4 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B8A37C6420848B4100001F3E /* FileSplitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FileSplitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A37C6620848B4100001F3E /* ArrayExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionsTests.swift; sourceTree = "<group>"; };
 		B8A37C6820848B4100001F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				B8C1F27E20833FD80016708B /* Array+.swift */,
 				B8C1F270208330FC0016708B /* ViewController.swift */,
 				B866CD882084BB2F00FEA2F4 /* FlieSplitter.swift */,
-				B866CD8A2084BFDA00FEA2F4 /* Result.swift */,
 				B8C1F272208330FD0016708B /* Assets.xcassets */,
 				B8C1F274208330FD0016708B /* Main.storyboard */,
 				B8C1F277208330FD0016708B /* Info.plist */,
@@ -149,17 +146,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Alex Shubin";
 				TargetAttributes = {
 					B8A37C6320848B4100001F3E = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1120;
 						TestTargetID = B8C1F26A208330FC0016708B;
 					};
 					B8C1F26A208330FC0016708B = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1120;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -220,7 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B866CD892084BB2F00FEA2F4 /* FlieSplitter.swift in Sources */,
-				B866CD8B2084BFDA00FEA2F4 /* Result.swift in Sources */,
 				B8C1F271208330FC0016708B /* ViewController.swift in Sources */,
 				B8C1F27F20833FD80016708B /* Array+.swift in Sources */,
 				B8C1F26F208330FC0016708B /* AppDelegate.swift in Sources */,
@@ -264,7 +260,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FileSplitter.app/Contents/MacOS/FileSplitter";
 			};
 			name = Debug;
@@ -284,7 +280,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FileSplitter.app/Contents/MacOS/FileSplitter";
 			};
 			name = Release;
@@ -406,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = RBNKHS73S3;
@@ -417,7 +414,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -425,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = RBNKHS73S3;
@@ -436,7 +434,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.avs.FileSplitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

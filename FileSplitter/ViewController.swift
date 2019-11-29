@@ -26,27 +26,29 @@ class ViewController: NSViewController {
     
     @IBAction private func runButtonTap(_ sender: NSButton) {
         guard let path = filePath else {
-            showAlert(title: "Error", text: "File not chosen!")
+            showAlert(title: "Error", text: "Choose the file first!")
             return
         }
         setLoadingState(true)
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            guard let `self` = self else {
+            guard let self = self else {
                 return
             }
             self.fileSplitter
                 .split(flieUrl: path,
-                       chunksCount: self.chunksCount) {
-                        self.setLoadingState(false)
-                        switch $0 {
-                        case .success:
-                            self.showAlert(title: "Success", text: "Done!")
-                        case .error(let error):
-                            switch error {
-                            case .readFileError:
-                                self.showAlert(title: "Error", text: "Couldn't read file!")
-                            case .writeFileError:
-                                self.showAlert(title: "Error", text: "Couldn't save file!")
+                       chunksCount: self.chunksCount) { result in
+                        DispatchQueue.main.async {
+                            self.setLoadingState(false)
+                            switch result {
+                            case .success:
+                                self.showAlert(title: "Success", text: "Done!")
+                            case .failure(let error):
+                                switch error {
+                                case .readFileError:
+                                    self.showAlert(title: "Error", text: "Couldn't read file!")
+                                case .writeFileError:
+                                    self.showAlert(title: "Error", text: "Couldn't save file!")
+                                }
                             }
                         }
             }

@@ -5,20 +5,15 @@
 import Foundation
 
 enum FileSplitterError: String, Error {
-    case readFileError
-    case writeFileError
+    case readFileError, writeFileError
 }
 
 struct FileSplitter {
-    
     func split(flieUrl: URL,
                chunksCount: Int,
                completion: @escaping ((Result<Void, FileSplitterError>) -> Void)) {
-        
         guard let fileData = try? String(contentsOfFile: flieUrl.path, encoding: .utf8) else {
-            DispatchQueue.main.async {
-                completion(.error(.readFileError))
-            }
+            completion(.failure(.readFileError))
             return
         }
         let fileStrings = fileData.components(separatedBy: .newlines).filter { !$0.isEmpty }
@@ -35,14 +30,10 @@ struct FileSplitter {
             do {
                 try str.write(to: newFile, atomically: true, encoding: .utf8)
             } catch {
-                DispatchQueue.main.async {
-                    completion(.error(.writeFileError))
-                }
+                completion(.failure(.writeFileError))
                 return
             }
         }
-        DispatchQueue.main.async {
-            completion(.success(()))
-        }
+        completion(.success(()))
     }
 }
