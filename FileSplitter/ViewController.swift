@@ -6,9 +6,10 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    private let fileSplitter = FileSplitter()
+    private let fileSplitter: FileSplitterType = FileSplitter()
     
     @IBOutlet weak var runButton: NSButton!
+    @IBOutlet weak var selectButton: NSButton!
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet private weak var fileNameTextField: NSTextField!
     @IBOutlet private weak var chunksCountTextField: NSTextField!
@@ -31,26 +32,21 @@ class ViewController: NSViewController {
         }
         setLoadingState(true)
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.fileSplitter
-                .split(flieUrl: path,
-                       chunksCount: self.chunksCount) { result in
-                        DispatchQueue.main.async {
-                            self.setLoadingState(false)
-                            switch result {
-                            case .success:
-                                self.showAlert(title: "Success", text: "Done!")
-                            case .failure(let error):
-                                switch error {
-                                case .readFileError:
-                                    self.showAlert(title: "Error", text: "Couldn't read file!")
-                                case .writeFileError:
-                                    self.showAlert(title: "Error", text: "Couldn't save file!")
-                                }
-                            }
-                        }
+            guard let self = self else { return }
+            let result = self.fileSplitter.split(flieUrl: path, chunksCount: self.chunksCount)
+            DispatchQueue.main.async {
+                self.setLoadingState(false)
+                switch result {
+                case .success:
+                    self.showAlert(title: "Success", text: "Done!")
+                case .failure(let error):
+                    switch error {
+                    case .readFileError:
+                        self.showAlert(title: "Error", text: "Couldn't read file!")
+                    case .writeFileError:
+                        self.showAlert(title: "Error", text: "Couldn't save file!")
+                    }
+                }
             }
         }
     }
@@ -64,7 +60,6 @@ class ViewController: NSViewController {
         
         dialog.title                   = "Choose a .txt file"
         dialog.showsResizeIndicator    = true
-        dialog.showsHiddenFiles        = false
         dialog.canChooseDirectories    = false
         dialog.canCreateDirectories    = true
         dialog.allowsMultipleSelection = false
@@ -77,6 +72,7 @@ class ViewController: NSViewController {
     
     private func setLoadingState(_ isLoading: Bool) {
         runButton.isEnabled = !isLoading
+        selectButton.isEnabled = !isLoading
         if isLoading {
             activityIndicator.startAnimation(nil)
         } else {

@@ -4,17 +4,18 @@
 
 import Foundation
 
+protocol FileSplitterType {
+    func split(flieUrl: URL, chunksCount: Int) -> Result<Void, FileSplitterError>
+}
+
 enum FileSplitterError: String, Error {
     case readFileError, writeFileError
 }
 
-struct FileSplitter {
-    func split(flieUrl: URL,
-               chunksCount: Int,
-               completion: @escaping ((Result<Void, FileSplitterError>) -> Void)) {
+struct FileSplitter: FileSplitterType {
+    func split(flieUrl: URL, chunksCount: Int) -> Result<Void, FileSplitterError> {
         guard let fileData = try? String(contentsOfFile: flieUrl.path, encoding: .utf8) else {
-            completion(.failure(.readFileError))
-            return
+            return .failure(.readFileError)
         }
         let fileStrings = fileData.components(separatedBy: .newlines).filter { !$0.isEmpty }
         let stringsToWrite = fileStrings.splitted(chunksCount: chunksCount).map {
@@ -30,10 +31,9 @@ struct FileSplitter {
             do {
                 try str.write(to: newFile, atomically: true, encoding: .utf8)
             } catch {
-                completion(.failure(.writeFileError))
-                return
+                return .failure(.writeFileError)
             }
         }
-        completion(.success(()))
+        return .success(())
     }
 }

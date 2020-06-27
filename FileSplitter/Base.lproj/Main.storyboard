@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -83,7 +83,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="File splitter" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="File splitter" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -110,13 +110,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wFT-JA-mFF">
-                                <rect key="frame" x="20" y="78" width="428" height="82"/>
+                                <rect key="frame" x="20" y="80" width="428" height="80"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kI8-LV-q6n">
-                                        <rect key="frame" x="0.0" y="60" width="428" height="22"/>
+                                        <rect key="frame" x="0.0" y="59" width="428" height="21"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QgD-pI-3Zw">
-                                                <rect key="frame" x="-2" y="5" width="66" height="17"/>
+                                                <rect key="frame" x="-2" y="5" width="66" height="16"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="File name:" id="9Gh-VG-9uJ">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -124,7 +124,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="240" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QZb-yt-dDM">
-                                                <rect key="frame" x="70" y="0.0" width="262" height="22"/>
+                                                <rect key="frame" x="70" y="0.0" width="262" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2Yu-dY-pno">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -132,7 +132,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button horizontalHuggingPriority="800" verticalHuggingPriority="750" horizontalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-je-4dJ">
-                                                <rect key="frame" x="334" y="-6" width="100" height="32"/>
+                                                <rect key="frame" x="334" y="-7" width="100" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Select file" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4WV-pl-uww">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -154,10 +154,10 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TRa-tH-4OK">
-                                        <rect key="frame" x="0.0" y="29" width="149" height="23"/>
+                                        <rect key="frame" x="0.0" y="29" width="149" height="22"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ldq-Kc-bsR">
-                                                <rect key="frame" x="-2" y="3" width="92" height="17"/>
+                                                <rect key="frame" x="-2" y="3" width="92" height="16"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Chunks count:" id="0zq-hC-cbv">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -165,7 +165,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L4L-2p-b9P">
-                                                <rect key="frame" x="92" y="1" width="40" height="22"/>
+                                                <rect key="frame" x="92" y="1" width="40" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="W0s-LC-bSj"/>
                                                 </constraints>
@@ -177,7 +177,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qiO-cr-c7R">
-                                                <rect key="frame" x="133" y="-2" width="19" height="27"/>
+                                                <rect key="frame" x="133" y="-3" width="19" height="28"/>
                                                 <stepperCell key="cell" continuous="YES" alignment="left" minValue="2" maxValue="100" doubleValue="2" id="hy4-fy-Z9c"/>
                                                 <connections>
                                                     <action selector="chunksStepperDidChange:" target="XfG-lQ-9wD" id="eSc-PQ-9eo"/>
@@ -245,6 +245,7 @@
                         <outlet property="chunksCountTextField" destination="L4L-2p-b9P" id="3Jc-Eu-K3F"/>
                         <outlet property="fileNameTextField" destination="QZb-yt-dDM" id="1YY-yS-NiT"/>
                         <outlet property="runButton" destination="bUM-Mp-n0M" id="n4N-Md-D2A"/>
+                        <outlet property="selectButton" destination="lvj-je-4dJ" id="thB-Ad-gmx"/>
                     </connections>
                 </viewController>
             </objects>
